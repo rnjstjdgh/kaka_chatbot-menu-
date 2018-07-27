@@ -31,9 +31,45 @@ def message(request):
     choice=received_json_data['content']
 
     if choice=='일':
+        url_site = 'https://dgucoop.dongguk.edu/store/store.php?w=4&l=1'  # 기본 사이트 url형식
+        data = urlencode(sunday).encode('utf-8')  # urlencode부분에 원하는 요일이 들어가면 됨
+        html = Request(url_site, data)
+        webpage = urlopen(html).read()
+        soup = BeautifulSoup(webpage, "html.parser")  # url에 쿼리를 보내서 내가 원하는 날짜에 해당하는 정보를 크롤링하기!
+        # print(soup)
+
+        root = soup.find('td', align='center')
+        list_menu_table = root.find_all('table', cellspacing='1')
+        list_loc_table = root.find_all('td', class_='menu_st')
+        dic = {}
+        for i in range(7):
+            # print(list_loc_table[i].text.strip())
+            lunch = list_menu_table[i].find_all('tr')
+            if i == 6:
+                # print(lunch[5].text)
+                dic[list_loc_table[i].text] = lunch[5].text.split()
+            else:
+                # print(lunch[1].text)
+                dic[list_loc_table[i].text] = lunch[1].text.split()
+
+            # print(list_menu_table[i].text.strip())
+        print(dic)
+        print('=' * 200)
+        str = ''
+        for i in dic.items():
+            # print(i)
+            str += i[0] + '-->' + '\n'
+            for j in i[1]:
+                str += j + '/'
+            str += '\n'
+            # str+=str(i[1])
+            # print(i[0]+'-->')
+            # print(i[1])
+
+       # print(str)
         return JsonResponse({
             'message':{
-                'text':'str'
+                'text':str
             },
             'keyboard':{
                 'type':'buttons',
