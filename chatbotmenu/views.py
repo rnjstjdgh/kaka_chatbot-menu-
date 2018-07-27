@@ -65,7 +65,7 @@ def message(request):
         #print(str)
         return JsonResponse({
             'message':{
-                'text':str
+                'text':'str'
             },
             'keyboard':{
                 'type':'buttons',
@@ -108,7 +108,7 @@ def message(request):
 
         return JsonResponse({
             'message':{
-                'text':str
+                'text':'str'
             },
             'keyboard':{
                 'type':'buttons',
@@ -151,7 +151,7 @@ def message(request):
 
         return JsonResponse({
             'message':{
-                'text':str
+                'text':'str'
             },
             'keyboard':{
                 'type':'buttons',
@@ -194,7 +194,7 @@ def message(request):
 
         return JsonResponse({
             'message':{
-                'text':str
+                'text':'str'
             },
             'keyboard':{
                 'type':'buttons',
@@ -237,7 +237,7 @@ def message(request):
 
         return JsonResponse({
             'message':{
-                'text':str
+                'text':'str'
             },
             'keyboard':{
                 'type':'buttons',
@@ -280,7 +280,7 @@ def message(request):
 
         return JsonResponse({
             'message':{
-                'text':str
+                'text':'str'
             },
             'keyboard':{
                 'type':'buttons',
@@ -323,7 +323,7 @@ def message(request):
 
         return JsonResponse({
             'message':{
-                'text':str
+                'text':"토요일 입니다!"
             },
             'keyboard':{
                 'type':'buttons',
